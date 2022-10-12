@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "types": ".dist/index.d.ts",
   "scripts": {
     "build": "prettier ./src/** && tsc",
     "build:dev": "prettier ./src/** && tsc --watch",
