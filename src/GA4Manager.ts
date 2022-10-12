@@ -66,7 +66,7 @@ export class GA4Manager extends ManagerPlugin {
     this.initialized = false;
   }
 
-  init9(trackingId: string): void {
+  init(trackingId: string): void {
 
     if (!this.initialized) {
       this._setupConfig(trackingId);
