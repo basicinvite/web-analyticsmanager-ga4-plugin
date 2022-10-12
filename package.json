@@ -1,0 +1,26 @@
+{
+  "name": "web-analyticsmanager-ga4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "prettier ./src/** && tsc",
+    "build:dev": "prettier ./src/** && tsc --watch",
+    "test": "jest --collect-coverage"
+  },
+  "files": [
+    "/dist/**/*.js",
+    "/dist/**/*.d.ts"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^28.1.8",
+    "@web-analyticsmanager/main": "git+https://github.com/basicinvite/web-analyticsmanager.git",
+    "jest": ">=28.0.0 <29.0.0-0",
+    "prettier": "2.6.2",
+    "ts-jest": "^28.0.8",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {}
+}
