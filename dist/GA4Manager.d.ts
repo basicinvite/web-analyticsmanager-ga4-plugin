@@ -1,6 +1,6 @@
 import { ManagerPlugin } from '@web-analyticsmanager/main';
 import { ManagerConfig } from '@web-analyticsmanager/main/dist/Configuration/ManagerConfig';
-export declare class GA4Manager extends ManagerPlugin {
+export default class GA4Manager extends ManagerPlugin {
     managerConfig: ManagerConfig;
     initialized: boolean;
     private eventTypes;
@@ -11,7 +11,7 @@ export declare class GA4Manager extends ManagerPlugin {
     addTrackingCode(trackingHtml: string): void;
     getTrackingCodeHTML(): string;
     private _setupConfig;
-    init9(trackingId: string): void;
+    init(trackingId: string): void;
     private _checkDefaultEvent;
     fireTrackingEvent(eventType: string, eventPayload: any): void;
 }

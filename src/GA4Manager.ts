@@ -4,7 +4,7 @@ import { AnalyticsEventData } from '@web-analyticsmanager/main/dist/Objects/Anal
 import GA4Event from "./Objects/GA4Event";
 import GA4EventTypes from 'Objects/GA4EventTypes';
 
-export class GA4Manager extends ManagerPlugin {
+export default class GA4Manager extends ManagerPlugin {
   managerConfig: ManagerConfig = { trackingId: '' };
   initialized: boolean = false;
 

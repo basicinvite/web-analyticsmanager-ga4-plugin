@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GA4Manager = void 0;
 const main_1 = require("@web-analyticsmanager/main");
 const ManagerConfig_1 = require("@web-analyticsmanager/main/dist/Configuration/ManagerConfig");
 const AnalyticsEventData_1 = require("@web-analyticsmanager/main/dist/Objects/AnalyticsEventData");
@@ -60,7 +59,7 @@ class GA4Manager extends main_1.ManagerPlugin {
         this.managerConfig = new ManagerConfig_1.ManagerConfig({ trackingId: trackingId });
         this.initialized = false;
     }
-    init9(trackingId) {
+    init(trackingId) {
         if (!this.initialized) {
             this._setupConfig(trackingId);
             const trackingHtml = this.getTrackingCodeHTML();
@@ -87,4 +86,4 @@ class GA4Manager extends main_1.ManagerPlugin {
         }
     }
 }
-exports.GA4Manager = GA4Manager;
+exports.default = GA4Manager;
