@@ -2,8 +2,8 @@
   "name": "web-analyticsmanager-ga4",
   "version": "1.0.0",
   "description": "",
-  "main": ".dist/GA4Manager.js",
-  "types": ".dist/GA4Manager.d.ts",
+  "main": "./dist/GA4Manager.js",
+  "types": "./dist/GA4Manager.d.ts",
   "scripts": {
     "build": "prettier ./src/** && tsc",
     "build:dev": "prettier ./src/** && tsc --watch",
