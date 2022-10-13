@@ -9,14 +9,14 @@ const AnalyticsEventData_1 = require("@web-analyticsmanager/main/dist/Objects/An
 const GA4Event_1 = __importDefault(require("./Objects/GA4Event"));
 const GA4EventTypes_1 = __importDefault(require("Objects/GA4EventTypes"));
 class GA4Manager extends main_1.ManagerPlugin {
-    constructor(trackingID) {
+    constructor(config) {
         super();
         this.managerConfig = { trackingId: '' };
         this.initialized = false;
         this.GA4ErrorMsg = {
             initializationError: "GA4 Manager has not been initialized. Please initialize with the appropriate data."
         };
-        this.managerConfig.trackingId = trackingID;
+        this.managerConfig.trackingId = config.trackingId;
         this.eventTypes = new GA4EventTypes_1.default();
     }
     _logError(error) {

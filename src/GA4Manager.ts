@@ -3,6 +3,7 @@ import { ManagerConfig } from '@web-analyticsmanager/main/dist/Configuration/Man
 import { AnalyticsEventData } from '@web-analyticsmanager/main/dist/Objects/AnalyticsEventData';
 import GA4Event from "./Objects/GA4Event";
 import GA4EventTypes from 'Objects/GA4EventTypes';
+import { ManagerConfigInterface } from '@web-analyticsmanager/main/dist/Configuration/Interfaces/ManagerConfig.Interface';
 
 export default class GA4Manager extends ManagerPlugin {
   managerConfig: ManagerConfig = { trackingId: '' };
@@ -14,9 +15,8 @@ export default class GA4Manager extends ManagerPlugin {
     initializationError: "GA4 Manager has not been initialized. Please initialize with the appropriate data."
   }
 
-  constructor(trackingID: string) {
+  constructor() {
     super();
-    this.managerConfig.trackingId = trackingID;
     this.eventTypes = new GA4EventTypes();
   }
 
@@ -66,10 +66,10 @@ export default class GA4Manager extends ManagerPlugin {
     this.initialized = false;
   }
 
-  init(trackingId: string): void {
+  init(config: ManagerConfigInterface): void {
 
     if (!this.initialized) {
-      this._setupConfig(trackingId);
+      this._setupConfig(config.trackingId);
       const trackingHtml = this.getTrackingCodeHTML();
 
       if (trackingHtml) {
