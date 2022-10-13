@@ -6,13 +6,13 @@ export default class GA4Manager extends ManagerPlugin {
     initialized: boolean;
     private eventTypes;
     private GA4ErrorMsg;
-    constructor(config: ManagerConfigInterface);
+    constructor();
     private _logError;
     private _getBodyElement;
     addTrackingCode(trackingHtml: string): void;
     getTrackingCodeHTML(): string;
     private _setupConfig;
-    init(trackingId: string): void;
+    init(config: ManagerConfigInterface): void;
     private _checkDefaultEvent;
     fireTrackingEvent(eventType: string, eventPayload: any): void;
 }
