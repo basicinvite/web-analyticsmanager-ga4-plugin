@@ -8,9 +8,6 @@ export default class GA4Manager extends ManagerPlugin {
     private GA4ErrorMsg;
     constructor();
     private _logError;
-    private _getBodyElement;
-    addTrackingCode(trackingHtml: string): void;
-    getTrackingCodeHTML(): string;
     private _setupConfig;
     init(config: ManagerConfigInterface): void;
     private _checkDefaultEvent;
