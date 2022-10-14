@@ -2,7 +2,7 @@ import { ManagerPlugin } from '@web-analyticsmanager/main';
 import { ManagerConfig } from '@web-analyticsmanager/main/dist/Configuration/ManagerConfig';
 import { AnalyticsEventData } from '@web-analyticsmanager/main/dist/Objects/AnalyticsEventData';
 import GA4Event from "./Objects/GA4Event";
-import GA4EventTypes from 'Objects/GA4EventTypes';
+import GA4EventTypes from './Objects/GA4EventTypes';
 import { ManagerConfigInterface } from '@web-analyticsmanager/main/dist/Configuration/Interfaces/ManagerConfig.Interface';
 
 export default class GA4Manager extends ManagerPlugin {

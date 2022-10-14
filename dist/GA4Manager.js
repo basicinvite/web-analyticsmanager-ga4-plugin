@@ -7,7 +7,7 @@ const main_1 = require("@web-analyticsmanager/main");
 const ManagerConfig_1 = require("@web-analyticsmanager/main/dist/Configuration/ManagerConfig");
 const AnalyticsEventData_1 = require("@web-analyticsmanager/main/dist/Objects/AnalyticsEventData");
 const GA4Event_1 = __importDefault(require("./Objects/GA4Event"));
-const GA4EventTypes_1 = __importDefault(require("Objects/GA4EventTypes"));
+const GA4EventTypes_1 = __importDefault(require("./Objects/GA4EventTypes"));
 class GA4Manager extends main_1.ManagerPlugin {
     constructor() {
         super();
