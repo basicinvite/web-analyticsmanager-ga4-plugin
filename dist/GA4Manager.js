@@ -56,7 +56,7 @@ class GA4Manager extends main_1.ManagerPlugin {
     }
     _setupConfig(trackingId) {
         this.managerConfig = new ManagerConfig_1.ManagerConfig({ trackingId: trackingId });
-        this.initialized = false;
+        this.initialized = true;
     }
     init(config) {
         if (!this.initialized) {

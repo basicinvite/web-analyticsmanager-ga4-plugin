@@ -63,7 +63,7 @@ export default class GA4Manager extends ManagerPlugin {
 
   private _setupConfig(trackingId: string) {
     this.managerConfig = new ManagerConfig({ trackingId: trackingId });
-    this.initialized = false;
+    this.initialized = true;
   }
 
   init(config: ManagerConfigInterface): void {
