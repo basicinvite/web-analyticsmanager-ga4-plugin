@@ -46,15 +46,7 @@ export default class GA4Manager extends ManagerPlugin {
 
     let trackingNode = '';
     if (this.initialized) {
-      trackingNode = `window.dataLayer = window.dataLayer || [];
-      <script async src="https://www.googletagmanager.com/gtag/js?id=${this.managerConfig.trackingId}"></script>
-      function ga4() {
-        dataLayer.push(arguments);
-      }
-
-      ga4('js', new Date());
-      ga4('config', ${this.managerConfig.trackingId})
-    `;
+      trackingNode = `window.dataLayer = window.dataLayer || [];<script async src="https://www.googletagmanager.com/gtag/js?id=${this.managerConfig.trackingId}"></script>function ga4(){dataLayer.push(arguments);}ga4('js', new Date());ga4('config', ${this.managerConfig.trackingId})`;
     } else {
       this._logError(this.GA4ErrorMsg.initializationError);
     }
