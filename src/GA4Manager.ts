@@ -26,33 +26,6 @@ export default class GA4Manager extends ManagerPlugin {
     }
   }
 
-  private _getBodyElement(): any {
-    return document.querySelector("body");
-  }
-
-  addTrackingCode(trackingHtml: string): void {
-    if (this.initialized) {
-      let script = document.createElement('script');
-      script.append(trackingHtml);
-
-      let body = this._getBodyElement();
-      if (body) {
-        body.appendChild(script);
-      }
-    }
-  }
-
-  getTrackingCodeHTML(): string {
-
-    let trackingNode = '';
-    if (this.initialized) {
-      trackingNode = `window.dataLayer = window.dataLayer || [];<script async src="https://www.googletagmanager.com/gtag/js?id=${this.managerConfig.trackingId}"></script>function ga4(){dataLayer.push(arguments);}ga4('js', new Date());ga4('config', ${this.managerConfig.trackingId})`;
-    } else {
-      this._logError(this.GA4ErrorMsg.initializationError);
-    }
-    return trackingNode;
-  }
-
   private _setupConfig(trackingId: string) {
     this.managerConfig = new ManagerConfig({ trackingId: trackingId });
     this.initialized = true;
@@ -62,11 +35,6 @@ export default class GA4Manager extends ManagerPlugin {
 
     if (!this.initialized) {
       this._setupConfig(config.trackingId);
-      const trackingHtml = this.getTrackingCodeHTML();
-
-      if (trackingHtml) {
-        this.addTrackingCode(trackingHtml);
-      }
     }
   }
 
