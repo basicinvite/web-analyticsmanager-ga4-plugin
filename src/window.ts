@@ -1,6 +1,7 @@
 interface Window {
   GoogleAnalytics4: {
-    ga: any,
-    Data: any
+    Data: any,
+    Config: any
   }
+  gtag: any
 }

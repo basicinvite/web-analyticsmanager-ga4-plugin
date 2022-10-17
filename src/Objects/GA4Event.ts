@@ -45,9 +45,9 @@ export default class GA4Event extends AnalyticsEvent {
 
   fire(): void {
     if (this._isValid()) {
-      if (window.GoogleAnalytics4.ga) {
+      if (window.gtag) {
         const eventData = this.getEventData();
-        window.GoogleAnalytics4.ga('event', eventData.eventType, eventData.eventPayload);
+        window.gtag('event', eventData.eventType, eventData.eventPayload);
       }
     } else {
       this._logEventError(`Event data not valid: \n Payload ${this.getEventData()}`)

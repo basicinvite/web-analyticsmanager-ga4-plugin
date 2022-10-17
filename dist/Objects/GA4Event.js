@@ -32,9 +32,9 @@ class GA4Event extends AnalyticsEvent_1.AnalyticsEvent {
     }
     fire() {
         if (this._isValid()) {
-            if (window.GoogleAnalytics4.ga) {
+            if (window.gtag) {
                 const eventData = this.getEventData();
-                window.GoogleAnalytics4.ga('event', eventData.eventType, eventData.eventPayload);
+                window.gtag('event', eventData.eventType, eventData.eventPayload);
             }
         }
         else {
