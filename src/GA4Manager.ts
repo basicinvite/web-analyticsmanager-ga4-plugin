@@ -3,7 +3,10 @@ import { ManagerConfig } from '@web-analyticsmanager/main/dist/Configuration/Man
 import { AnalyticsEventData } from '@web-analyticsmanager/main/dist/Objects/AnalyticsEventData';
 import GA4Event from "./Objects/GA4Event";
 import GA4EventTypes from './Objects/GA4EventTypes';
+import { GoogleAnalytics4 } from 'Objects/GA4Data';
 import { ManagerConfigInterface } from '@web-analyticsmanager/main/dist/Configuration/Interfaces/ManagerConfig.Interface';
+
+export { GoogleAnalytics4 };
 
 export default class GA4Manager extends ManagerPlugin {
   managerConfig: ManagerConfig = { trackingId: '' };
