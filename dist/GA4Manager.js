@@ -41,12 +41,12 @@ class GA4Manager extends main_1.ManagerPlugin {
             const required = this._checkDefaultEvent(eventType);
             const eventData = new AnalyticsEventData_1.AnalyticsEventData(eventType, eventPayload);
             if (required) {
-                const event = new GA4Event_1.default(eventData, gaReference, required);
-                event.fire();
+                const e = new GA4Event_1.default(eventData, gaReference, required);
+                e.fire();
             }
             else {
-                const event = new GA4Event_1.default(eventData, gaReference);
-                event.fire();
+                const e = new GA4Event_1.default(eventData, gaReference);
+                e.fire();
             }
         }
     }

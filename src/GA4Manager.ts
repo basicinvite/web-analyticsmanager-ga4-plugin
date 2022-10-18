@@ -46,11 +46,11 @@ export default class GA4Manager extends ManagerPlugin {
       const required = this._checkDefaultEvent(eventType);
       const eventData = new AnalyticsEventData(eventType, eventPayload);
       if (required) {
-        const event: GA4Event = new GA4Event(eventData, gaReference, required);
-        event.fire();
+        const e: GA4Event = new GA4Event(eventData, gaReference, required);
+        e.fire();
       } else {
-        const event: GA4Event = new GA4Event(eventData, gaReference);
-        event.fire();
+        const e: GA4Event = new GA4Event(eventData, gaReference);
+        e.fire();
       }
     }
 
