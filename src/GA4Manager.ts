@@ -3,10 +3,7 @@ import { ManagerConfig } from '@web-analyticsmanager/main/dist/Configuration/Man
 import { AnalyticsEventData } from '@web-analyticsmanager/main/dist/Objects/AnalyticsEventData';
 import GA4Event from "./Objects/GA4Event";
 import GA4EventTypes from './Objects/GA4EventTypes';
-import { GoogleAnalytics4 } from 'Objects/GA4Data';
 import { ManagerConfigInterface } from '@web-analyticsmanager/main/dist/Configuration/Interfaces/ManagerConfig.Interface';
-
-export { GoogleAnalytics4 };
 
 export default class GA4Manager extends ManagerPlugin {
   managerConfig: ManagerConfig = { trackingId: '' };
@@ -45,15 +42,15 @@ export default class GA4Manager extends ManagerPlugin {
     return this.eventTypes.getEventTypeByName(type);
   }
 
-  fireTrackingEvent(eventType: string, eventPayload: any) {
+  fireTrackingEvent(eventType: string, eventPayload: any, gaReference: any) {
     if (eventType && eventPayload) {
       const required = this._checkDefaultEvent(eventType);
       const eventData = new AnalyticsEventData(eventType, eventPayload);
       if (required) {
-        const event = new GA4Event(eventData, required);
+        const event = new GA4Event(eventData, gaReference, required);
         event.fire();
       } else {
-        const event = new GA4Event(eventData);
+        const event = new GA4Event(eventData, gaReference);
         event.fire();
       }
     }

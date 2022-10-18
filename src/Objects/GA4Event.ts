@@ -6,9 +6,10 @@ export default class GA4Event extends AnalyticsEvent {
 
   public data = {};
   private requiredItems: Array<string> = [];
+  private ga4: any;
 
 
-  constructor(details: AnalyticsEventDataInterface, required?: Array<string>) {
+  constructor(details: AnalyticsEventDataInterface, gaReference: any, required?: Array<string>) {
 
     const eventData = {
       eventType: '',
@@ -20,6 +21,8 @@ export default class GA4Event extends AnalyticsEvent {
     if (required && required.length > 0) {
       this.requiredItems = required;
     }
+
+    this.ga4 = gaReference;
   }
 
   private _isValid() {
@@ -45,9 +48,9 @@ export default class GA4Event extends AnalyticsEvent {
 
   fire(): void {
     if (this._isValid()) {
-      if (window.gtag) {
+      if (this.ga4) {
         const eventData = this.getEventData();
-        window.gtag('event', eventData.eventType, eventData.eventPayload);
+        this.ga4('event', eventData.eventType, eventData.eventPayload);
       }
     } else {
       this._logEventError(`Event data not valid: \n Payload ${this.getEventData()}`)

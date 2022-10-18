@@ -3,7 +3,8 @@ import { AnalyticsEventDataInterface } from "@web-analyticsmanager/main/dist/Obj
 export default class GA4Event extends AnalyticsEvent {
     data: {};
     private requiredItems;
-    constructor(details: AnalyticsEventDataInterface, required?: Array<string>);
+    private ga4;
+    constructor(details: AnalyticsEventDataInterface, gaReference: any, required?: Array<string>);
     private _isValid;
     private _logEventError;
     fire(): void;

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const AnalyticsEvent_1 = require("@web-analyticsmanager/main/dist/Objects/AnalyticsEvent");
 class GA4Event extends AnalyticsEvent_1.AnalyticsEvent {
-    constructor(details, required) {
+    constructor(details, gaReference, required) {
         const eventData = Object.assign({ eventType: '', eventPayload: {} }, details);
         super(eventData);
         this.data = {};
@@ -11,6 +11,7 @@ class GA4Event extends AnalyticsEvent_1.AnalyticsEvent {
         if (required && required.length > 0) {
             this.requiredItems = required;
         }
+        this.ga4 = gaReference;
     }
     _isValid() {
         const payload = this.data;
@@ -32,9 +33,9 @@ class GA4Event extends AnalyticsEvent_1.AnalyticsEvent {
     }
     fire() {
         if (this._isValid()) {
-            if (window.gtag) {
+            if (this.ga4) {
                 const eventData = this.getEventData();
-                window.gtag('event', eventData.eventType, eventData.eventPayload);
+                this.ga4('event', eventData.eventType, eventData.eventPayload);
             }
         }
         else {

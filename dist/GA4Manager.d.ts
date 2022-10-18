@@ -11,5 +11,5 @@ export default class GA4Manager extends ManagerPlugin {
     private _setupConfig;
     init(config: ManagerConfigInterface): void;
     private _checkDefaultEvent;
-    fireTrackingEvent(eventType: string, eventPayload: any): void;
+    fireTrackingEvent(eventType: string, eventPayload: any, gaReference: any): void;
 }
