@@ -13,10 +13,10 @@ class GA4Manager extends main_1.ManagerPlugin {
         super();
         this.managerConfig = { trackingId: '' };
         this.initialized = false;
+        this.eventTypes = new GA4EventTypes_1.default();
         this.GA4ErrorMsg = {
             initializationError: "GA4 Manager has not been initialized. Please initialize with the appropriate data."
         };
-        this.eventTypes = new GA4EventTypes_1.default();
     }
     _logError(error) {
         if (error) {
