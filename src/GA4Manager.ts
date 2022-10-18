@@ -5,10 +5,12 @@ import GA4Event from "./Objects/GA4Event";
 import GA4EventTypes from './Objects/GA4EventTypes';
 import { ManagerConfigInterface } from '@web-analyticsmanager/main/dist/Configuration/Interfaces/ManagerConfig.Interface';
 
+export { GA4Event, GA4EventTypes };
+
 export default class GA4Manager extends ManagerPlugin {
   managerConfig: ManagerConfig = { trackingId: '' };
   initialized: boolean = false;
-  eventTypes: GA4EventTypes = new GA4EventTypes();
+  private _eventTypes: GA4EventTypes;
 
   private GA4ErrorMsg = {
     initializationError: "GA4 Manager has not been initialized. Please initialize with the appropriate data."
@@ -16,6 +18,7 @@ export default class GA4Manager extends ManagerPlugin {
 
   constructor() {
     super();
+    this._eventTypes = new GA4EventTypes();
   }
 
   private _logError(error: string): void {
@@ -37,7 +40,7 @@ export default class GA4Manager extends ManagerPlugin {
   }
 
   private _checkDefaultEvent(type: string): any {
-    return this.eventTypes.getEventTypeByName(type);
+    return this._eventTypes?.getEventTypeByName(type);
   }
 
   fireTrackingEvent(eventType: string, eventPayload: any, gaReference: any) {
@@ -45,10 +48,10 @@ export default class GA4Manager extends ManagerPlugin {
       const required = this._checkDefaultEvent(eventType);
       const eventData = new AnalyticsEventData(eventType, eventPayload);
       if (required) {
-        const event = new GA4Event(eventData, gaReference, required);
+        const event: GA4Event = new GA4Event(eventData, gaReference, required);
         event.fire();
       } else {
-        const event = new GA4Event(eventData, gaReference);
+        const event: GA4Event = new GA4Event(eventData, gaReference);
         event.fire();
       }
     }
