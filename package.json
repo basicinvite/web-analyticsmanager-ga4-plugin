@@ -6,7 +6,7 @@
   "types": "./dist/GA4Manager.d.ts",
   "scripts": {
     "build": "prettier ./src/** && rm -r dist && tsc",
-    "build:dev": "prettier ./src/** && tsc --watch",
+    "build:dev": "prettier ./src/** && rm -r dist && tsc --watch",
     "test": "jest --collect-coverage"
   },
   "files": [
