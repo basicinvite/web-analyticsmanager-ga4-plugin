@@ -3,7 +3,6 @@ import { ManagerConfig } from '@web-analyticsmanager/main/dist/Configuration/Man
 import { AnalyticsEventData } from '@web-analyticsmanager/main/dist/Objects/AnalyticsEventData';
 import GA4Event from "./Objects/GA4Event";
 import GA4EventTypes from './Objects/GA4EventTypes';
-import { ManagerConfigInterface } from '@web-analyticsmanager/main/dist/Configuration/Interfaces/ManagerConfig.Interface';
 
 export default class GA4Manager extends ManagerPlugin {
   managerConfig: ManagerConfig = { trackingId: '' };
@@ -30,10 +29,10 @@ export default class GA4Manager extends ManagerPlugin {
     this.initialized = true;
   }
 
-  init(config: ManagerConfigInterface): void {
+  init(trackingId: string): void {
 
     if (!this.initialized) {
-      this._setupConfig(config.trackingId);
+      this._setupConfig(trackingId);
     }
   }
 
@@ -42,16 +41,20 @@ export default class GA4Manager extends ManagerPlugin {
   }
 
   fireTrackingEvent(eventType: string, eventPayload: any, gaReference: any) {
-    if (eventType && eventPayload) {
-      const required = this._checkDefaultEvent(eventType);
-      const eventData = new AnalyticsEventData(eventType, eventPayload);
-      if (required) {
-        const e: GA4Event = new GA4Event(eventData, gaReference, required);
-        e.fire();
-      } else {
-        const e: GA4Event = new GA4Event(eventData, gaReference);
-        e.fire();
+    if (this.initialized) {
+      if (eventType && eventPayload) {
+        const required = this._checkDefaultEvent(eventType);
+        const eventData = new AnalyticsEventData(eventType, eventPayload);
+        if (required) {
+          const e: GA4Event = new GA4Event(eventData, gaReference, required);
+          e.fire();
+        } else {
+          const e: GA4Event = new GA4Event(eventData, gaReference);
+          e.fire();
+        }
       }
+    } else {
+      this._logError(this.GA4ErrorMsg.initializationError);
     }
 
   }

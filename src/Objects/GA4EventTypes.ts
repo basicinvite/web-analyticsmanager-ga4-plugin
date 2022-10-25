@@ -1,6 +1,6 @@
 export default class GA4EventTypes {
 
-  private types = {
+  public types = {
     conversion: ['transaction_id', 'value', 'currency', 'items'],
     purchase: ['transaction_id', 'value', 'currency', 'items'],
     view_item: ['currency', 'value', 'items'],
