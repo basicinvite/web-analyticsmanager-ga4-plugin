@@ -1,6 +1,4 @@
-import { ManagerPlugin } from '@web-analyticsmanager/main';
-import { ManagerConfig } from '@web-analyticsmanager/main/dist/Configuration/ManagerConfig';
-import { AnalyticsEventData } from '@web-analyticsmanager/main/dist/Objects/AnalyticsEventData';
+import { ManagerPlugin, ManagerConfig, AnalyticsEventData } from 'web-analyticsmanager';
 import GA4Event from "./Objects/GA4Event";
 import GA4EventTypes from './Objects/GA4EventTypes';
 

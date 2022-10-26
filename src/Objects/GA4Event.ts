@@ -1,6 +1,6 @@
-import { AnalyticsEvent } from "@web-analyticsmanager/main/dist/Objects/AnalyticsEvent";
-import { AnalyticsEventData } from "@web-analyticsmanager/main/dist/Objects/AnalyticsEventData";
-import { AnalyticsEventDataInterface } from "@web-analyticsmanager/main/dist/Objects/Interfaces/AnalyticsEventData.Interface";
+import { AnalyticsEvent } from "web-analyticsmanager";
+import { AnalyticsEventData } from "web-analyticsmanager";
+import { AnalyticsEventDataInterface } from "web-analyticsmanager";
 
 export default class GA4Event extends AnalyticsEvent {
 

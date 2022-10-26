@@ -3,12 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const main_1 = require("@web-analyticsmanager/main");
-const ManagerConfig_1 = require("@web-analyticsmanager/main/dist/Configuration/ManagerConfig");
-const AnalyticsEventData_1 = require("@web-analyticsmanager/main/dist/Objects/AnalyticsEventData");
+const web_analyticsmanager_1 = require("web-analyticsmanager");
 const GA4Event_1 = __importDefault(require("./Objects/GA4Event"));
 const GA4EventTypes_1 = __importDefault(require("./Objects/GA4EventTypes"));
-class GA4Manager extends main_1.ManagerPlugin {
+class GA4Manager extends web_analyticsmanager_1.ManagerPlugin {
     constructor() {
         super();
         this.managerConfig = { trackingId: '' };
@@ -24,12 +22,12 @@ class GA4Manager extends main_1.ManagerPlugin {
         }
     }
     _setupConfig(trackingId) {
-        this.managerConfig = new ManagerConfig_1.ManagerConfig({ trackingId: trackingId });
+        this.managerConfig = new web_analyticsmanager_1.ManagerConfig({ trackingId: trackingId });
         this.initialized = true;
     }
-    init(config) {
+    init(trackingId) {
         if (!this.initialized) {
-            this._setupConfig(config.trackingId);
+            this._setupConfig(trackingId);
         }
     }
     _checkDefaultEvent(type) {
@@ -37,17 +35,22 @@ class GA4Manager extends main_1.ManagerPlugin {
         return (_a = this._eventTypes) === null || _a === void 0 ? void 0 : _a.getEventTypeByName(type);
     }
     fireTrackingEvent(eventType, eventPayload, gaReference) {
-        if (eventType && eventPayload) {
-            const required = this._checkDefaultEvent(eventType);
-            const eventData = new AnalyticsEventData_1.AnalyticsEventData(eventType, eventPayload);
-            if (required) {
-                const e = new GA4Event_1.default(eventData, gaReference, required);
-                e.fire();
+        if (this.initialized) {
+            if (eventType && eventPayload) {
+                const required = this._checkDefaultEvent(eventType);
+                const eventData = new web_analyticsmanager_1.AnalyticsEventData(eventType, eventPayload);
+                if (required) {
+                    const e = new GA4Event_1.default(eventData, gaReference, required);
+                    e.fire();
+                }
+                else {
+                    const e = new GA4Event_1.default(eventData, gaReference);
+                    e.fire();
+                }
             }
-            else {
-                const e = new GA4Event_1.default(eventData, gaReference);
-                e.fire();
-            }
+        }
+        else {
+            this._logError(this.GA4ErrorMsg.initializationError);
         }
     }
 }

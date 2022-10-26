@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const AnalyticsEvent_1 = require("@web-analyticsmanager/main/dist/Objects/AnalyticsEvent");
-class GA4Event extends AnalyticsEvent_1.AnalyticsEvent {
+const web_analyticsmanager_1 = require("web-analyticsmanager");
+class GA4Event extends web_analyticsmanager_1.AnalyticsEvent {
     constructor(details, gaReference, required) {
         const eventData = Object.assign({ eventType: '', eventPayload: {} }, details);
         super(eventData);

@@ -1,4 +1,4 @@
-import { AnalyticsEventData } from "@web-analyticsmanager/main/dist/Objects/AnalyticsEventData";
+import { AnalyticsEventData } from "web-analyticsmanager";
 import GA4Event from "../GA4Event";
 
 const gaFunction = function () {
